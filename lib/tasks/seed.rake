@@ -17,7 +17,7 @@ task :seed_artists_and_songs => [:environment, :clear_artists_and_songs] do
   # build song Natural Woman
   a = s.artist
   puts a.name
-  a.songs.build(name: "Natural Woman")
+  s = a.songs.build(name: "Natural Woman").genres.build([{name: "R&B"},{name: "Soul"}])
   a.save
   puts a.songs.collect(&:name)
 

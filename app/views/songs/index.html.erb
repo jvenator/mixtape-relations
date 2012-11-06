@@ -1,11 +1,11 @@
-<h1>Listing songs <%= link_to 'New Song', new_song_path, class: "success button radius" %></h1>
+<h2>Listing songs <%= link_to 'New Song', new_song_path, class: "success button radius" %></h2>
 
-<table class="six">
+<table class="eight">
   <thead>
     <tr>
       <th>Name</th>
       <th>Artist</th>
-      <th>Genre</th>
+      <th>Genres</th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -16,7 +16,9 @@
       <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
       <td>
         <% unless song.genres.empty? %>
-          <%= song.genres.first.name %>
+          <% song.genres.each do |g| %>
+            <%= g.name %></br> 
+          <% end %>
         <% else %>
           none
         <% end %>

@@ -24,6 +24,9 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= yield %>
+	<div class="eight">
+		<%= render 'layouts/top_nav' %>
+	  <%= yield %>
+	</div>
 </body>
 </html>
