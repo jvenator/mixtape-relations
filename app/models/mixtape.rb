@@ -1,5 +1,5 @@
 class Mixtape < ActiveRecord::Base
-  attr_accessible :name, :owner_id
+  attr_accessible :name, :user_id
 
   belongs_to :user
 end

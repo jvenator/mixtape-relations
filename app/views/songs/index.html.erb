@@ -1,23 +1,32 @@
-<h1>Listing songs</h1>
+<h1>Listing songs <%= link_to 'New Song', new_song_path, class: "success button radius" %></h1>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
-<% @songs.each do |song| %>
-  <tr>
-    <td><%= song.name %></td>
-    <td><%= link_to 'Show', song %></td>
-    <td><%= link_to 'Edit', edit_song_path(song) %></td>
-    <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
-<% end %>
+<table class="six">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Artist</th>
+      <th>Genre</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @songs.each do |song| %>
+    <tr>
+      <td><%= song.name %></td>
+      <td><%= link_to song.artist.name, artist_path(song.artist) %></td>
+      <td>
+        <% unless song.genres.empty? %>
+          <%= song.genres.first.name %>
+        <% else %>
+          none
+        <% end %>
+      <td>
+        <ul class='button-group radius'>
+          <li><%= link_to 'Edit', edit_song_path(song), class: "round button small secondary" %></li>
+          <li><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' }, class: "round button small alert" %></li>
+        </ul>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Song', new_song_path %>

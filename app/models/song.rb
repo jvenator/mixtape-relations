@@ -4,7 +4,7 @@ class Song < ActiveRecord::Base
   belongs_to :artist
 
   has_many :genre_songs
-  has_many :songs, through: :genre_songs
+  has_many :genres, through: :genre_songs
 
   has_many :song_albums
   has_many :albums, through: :song_albums
